@@ -1,34 +1,25 @@
-// método para pegar um elemento da DOM. Esse é bem parecido com o anterior, 
-//com uma única diferença: ele retorna apenas o primeiro elemento que atende aos requisitos. 
-//Ao encontrá-lo, esse método pára a sua execução
+// Importe os módulos necessários
+import { funcaoDoFormulario } from './formulario.js';
+import { ContaCorrente, ContaPoupanca, ContaUniversitaria } from './contas.js';
+import { adicionarValor, verHistoricoTransacoes, atualizarSaldoNaTela, realizarAcao } from './transacoes.js';
 
-function meuEscopo () {
-  const form = document.querySelector('.form');
-  const resultado = document.querySelector('.resultado');
+// Código para o formulário
+funcaoDoFormulario();
 
-  const pessoas = [];
+// Exemplo de criação de contas
+const minhaContaCorrente = new ContaCorrente("001", "12345", true);
+const minhaContaPoupanca = new ContaPoupanca("002", "54321");
+const minhaContaUniversitaria = new ContaUniversitaria("003", "67890");
 
-  function recebeEventoForm (evento) {
-    evento.preventDefault();
+console.log("Conta corrente: " + minhaContaCorrente.saldo);
+console.log("Conta Poupanca: " + minhaContaPoupanca.saldo); 
+console.log("Conta Universitaria: " + minhaContaUniversitaria.saldo);
 
-    const nome = form.querySelector('.nome');
-    const sobrenome = form.querySelector('.sobrenome');
-    const peso = form.querySelector('.peso');
-    const altura = form.querySelector('.altura');
+// Código para transações
+document.getElementById("acao").addEventListener('change', realizarAcao);
+document.getElementById("adicionar-valor").addEventListener('click', adicionarValor);
+document.getElementById("ver-historico").addEventListener('click', verHistoricoTransacoes);
+document.getElementById("ver-saldo").addEventListener('click', atualizarSaldoNaTela);
 
-    pessoas.push({
-      nome: nome.value,
-      sobrenome: sobrenome.value,
-      peso: peso.value,
-      altura: altura.value
-    });
-
-    console.log(pessoas);
-
-    resultado.innerHTML += `<p>${nome.value} ${sobrenome.value} ` +
-      `${peso.value} ${altura.value}</p>`;
-  }
-
-  form.addEventListener('submit', recebeEventoForm);
-}
-meuEscopo();
+// Inicialmente, o saldo está oculto
+atualizarSaldoNaTela();

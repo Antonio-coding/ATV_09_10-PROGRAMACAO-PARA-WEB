@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
-  <title>Exercícios</title>
+  <title>Simulação de Conta Bancária</title>
+  <link rel="stylesheet" href="style/style.css">
 </head>
+
 <body>
   <form class="form" action="" method="get">
     <p>Nome: <input type="text" class="nome"></p>
@@ -13,8 +16,47 @@
     <button>Enviar</button>
   </form>
 
+
+  <div id="sidebar">
+    <h2>Conta Bancária</h2>
+    <p>Saldo Atual:</p>
+    <div id="saldo">
+      $1000.00
+      <!-- Saldo inicial, pode ser atualizado pelo JavaScript -->
+    </div>
+    <h3>Histórico de Transações</h3>
+    <div id="historico">
+      <!-- O histórico de transações será exibido aqui -->
+    </div>
+  </div>
+  <div id="content">
+    <h1>Simulação de Conta Bancária</h1>
+    <div>
+      <label for="acao">Escolha uma opção:</label>
+      <select id="acao">
+        <option value="1">Depositar</option>
+        <option value="2">Sacar</option>
+        <option value="3">Ver Saldo</option>
+        <option value="4">Ver Histórico de Transações</option>
+        <option value="5">Sair</option>
+      </select>
+    </div>
+    <div id="valor-input" style="display: none;">
+      <label for="valor">Digite o valor:</label>
+      <input type="number" id="valor" step="0.01">
+      <button onclick="adicionarValor()">Adicionar Valor</button>
+    </div>
+    <button onclick="realizarAcao()">Executar</button>
+    <div id="output">
+      <!-- Aqui serão exibidas as mensagens de saída -->
+    </div>
+  </div>
+
+
   <div class="resultado"></div>
-  
-  <script src="js/script.js"></script>
+
+  <script type="module" src="js/script.js"></script>
+
 </body>
+
 </html>
