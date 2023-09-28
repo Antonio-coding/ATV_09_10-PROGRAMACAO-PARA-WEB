@@ -8,14 +8,26 @@
 </head>
 
 <body>
-  <form class="form" action="" method="get">
-    <p>Nome: <input type="text" class="nome"></p>
-    <p>Sobrenome: <input type="text" class="sobrenome"></p>
-    <p>Peso: <input type="text" class="peso"></p>
-    <p>Altura: <input type="text" class="altura"></p>
-    <button>Enviar</button>
-  </form>
+  <h1>Cadastro de Usuário</h1>
+  <form id="cadastro-form">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" required>
+    <br>
 
+    <label for="sobrenome">Sobrenome:</label>
+    <input type="text" id="sobrenome" name="sobrenome" required>
+    <br>
+
+    <label for="conta">Tipo de Conta:</label>
+    <select id="conta" name="conta">
+      <option value="corrente">Conta Corrente</option>
+      <option value="poupanca">Conta Poupança</option>
+      <option value="universitaria">Conta Universitária</option>
+    </select>
+    <br>
+
+    <button type="submit">Cadastrar</button>
+  </form>
 
   <div id="sidebar">
     <h2>Conta Bancária</h2>

@@ -1,69 +1,72 @@
 body {
-    font-family: "Press Start 2P", cursive;
-    background-color: #191970;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    color: white;
-  }
-  
-  #sidebar {
-    width: 250px;
-    background-color: #daa520;
-    color: white;
-    padding: 20px;
-  }
-  
-  #content {
-    flex-grow: 1;
-    padding: 20px;
-  }
-  
-  button {
-    font-family: "Press Start 2P", cursive;
-    background-color: #333;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Adicionando sombra */
-  }
-  
-  button:hover {
-    background-color: #555;
-  }
-  select {
-    font-family: "Press Start 2P", cursive;
-    padding: 5px;
-    width: 100%;
-    margin-top: 10px;
-  }
-  
-  #valor-input {
-    margin-top: 10px;
-  }
-  
-  #output {
-    margin-top: 20px;
-  }
-  
-  #saldo {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-  
-  #historico {
-    margin-top: 10px;
-  }
-  
-  @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
-  
-  body,
-  button,
-  select {
-    font-family: "Press Start 2P", cursive;
-  }
-  
+  font-family: "Press Start 2P", cursive;
+  background-color: #191970;
+  margin: 0;
+  padding: 0;
+  color: white;
+  position: relative; /* Defina a posição relativa para o body */
+}
+
+#sidebar {
+  width: 250px;
+  background-color: #daa520;
+  color: white;
+  padding: 20px;
+  height: 100%; /* Ocupa toda a altura do elemento pai (body) */
+  position: absolute; /* Posição absoluta */
+  top: 0; /* Alinha o topo do sidebar com o topo do body */
+  left: 0; /* Alinha a esquerda do sidebar com a esquerda do body */
+  bottom: 0; /* Alinha o rodapé do sidebar com o rodapé do body */
+}
+
+#content {
+  margin-left: 270px; /* Deixa espaço à esquerda do conteúdo para acomodar o sidebar */
+  padding: 20px;
+}
+
+button {
+  font-family: "Press Start 2P", cursive;
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Adicionando sombra */
+}
+
+button:hover {
+  background-color: #555;
+}
+
+select {
+  font-family: "Press Start 2P", cursive;
+  padding: 5px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+#valor-input {
+  margin-top: 10px;
+}
+
+#output {
+  margin-top: 20px;
+}
+
+#saldo {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+#historico {
+  margin-top: 10px;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+body,
+button,
+select {
+  font-family: "Press Start 2P", cursive;
+}
