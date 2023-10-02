@@ -1,16 +1,85 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <title>Sua Página</title>
-  <link rel="stylesheet" href="../../style/style.css"> 
+  <link rel="stylesheet" href="../../style/style.css">
 </head>
+
 <body>
-  <!-- Incluindo o cabeçalho -->
+   <!-- Incluindo o cabeçalho -->
   <div id="header-container"></div>
-  
-  <!-- Resto do conteúdo da sua página -->
-  
-  <script src="../js/main.js" type="module"></script> 
+  <div class="container">
+    <section class="left-section">
+      <h1>Gerenciador de Contas Bancárias</h1>
+      <h2>Inserir Detalhes da Conta</h2>
+      <!-- Instruções para o Usuário -->
+      <div id="instructions" class="hidden">
+        <h2>Operações Bancárias</h2>
+        <p>Para realizar operações bancárias, siga estas etapas:</p>
+        <ol>
+          <li>
+            <strong>Escolher o Tipo de Conta:</strong>
+            <span>Use o menu suspenso "Tipo de Conta" para selecionar o tipo de conta desejado: Conta Corrente, Conta
+              Poupança ou Conta Universitária.</span>
+          </li>
+          <li>
+            <strong>Inserir Saldo Inicial:</strong>
+            <span>Digite o saldo inicial desejado na caixa "Saldo". Certifique-se de que o campo esteja preenchido
+              corretamente e seja um valor numérico válido.</span>
+          </li>
+          <li>
+            <strong>Inserir:</strong>
+            <span>Clique no botão "Inserir" para criar uma nova conta bancária com os detalhes fornecidos. Você pode
+              criar várias contas escolhendo diferentes tipos e saldos.</span>
+          </li>
+          <li>
+            <strong>Deletar:</strong>
+            <span>Selecione uma conta da lista que deseja excluir. Clique no botão "Deletar" para remover a conta
+              selecionada. A conta será removida permanentemente.</span>
+          </li>
+          <li>
+            <strong>Visualizar Extrato:</strong>
+            <span>Clique no botão "Visualizar" para ver o extrato de todas as contas criadas. O extrato exibirá
+              informações sobre cada conta, incluindo tipo e saldo.</span>
+          </li>
+        </ol>
+      </div>
+       <!-- Botão para Expandir/Recolher -->
+    <button id="toggleButton" onclick="toggleInstructions()">Expandir ▼</button>
+
+      <form id="conta-form">
+
+        <label for="tipo">Tipo de Conta:</label>
+        <select id="tipo" name="tipo">
+          <option value="corrente">Conta Corrente</option>
+          <option value="poupanca">Conta Poupança</option>
+          <option value="universitaria">Conta Universitária</option>
+        </select>
+        <br>
+        <label for="saldo">Saldo:</label>
+        <input type="number" id="saldo" name="saldo" required>
+        <br>
+        <button type="button" id="inserir">Inserir</button>
+        <button type="button" id="deletar">Deletar</button>
+        <button type="button" id="visualizar">Visualizar</button>
+      </form>
+    </section>
+    <section class="right-section">
+      <h2>Extrato</h2>
+      <ul id="extrato">
+        <!-- Extrato será exibido aqui -->
+      </ul>
+      <h2>Saldo Atual</h2>
+      <p id="saldo-valor">$1000.00</p>
+      <!-- Saldo será atualizado pelo JavaScript -->
+    </section>
+  </div>
+  <div id="footer-container"></div>
+
+
+  <script src="../js/main.js" type="module"></script>
 </body>
+
 </html>
