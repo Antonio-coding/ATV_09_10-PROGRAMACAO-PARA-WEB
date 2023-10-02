@@ -1,72 +1,119 @@
-body {
-  font-family: "Press Start 2P", cursive;
-  background-color: #191970;
+/* Reset de estilos padrão */
+* {
   margin: 0;
   padding: 0;
-  color: white;
-  position: relative; /* Defina a posição relativa para o body */
+  box-sizing: border-box;
 }
 
-#sidebar {
-  width: 250px;
-  background-color: #daa520;
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+/* Estilos para o header */
+header {
+  background-color: #6e2da7;
   color: white;
+  padding: 10px;
+  text-align: center; /* Centraliza o texto no header */
+}
+
+/* Estilos para a navegação (nav) */
+header nav ul {
+  list-style: none;
+  padding: 0;
+  text-align: center; /* Centraliza a lista de navegação */
+}
+
+header nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+/* Estilos para os links na navegação */
+header nav ul li a {
+  text-decoration: none; /* Remove a decoração padrão do link */
+  color: white; /* Define a cor do texto dos links */
+  font-weight: bold; /* Define a negrito para destacar os links */
+  font-size: 18px; /* Define o tamanho da fonte */
+}
+
+/* Estilos para os links ao passar o mouse sobre eles */
+header nav ul li a:hover {
+  text-decoration: underline; /* Sublinha os links ao passar o mouse */
+}
+
+
+.container {
+  display: flex;
+  justify-content: space-between;
   padding: 20px;
-  height: 100%; /* Ocupa toda a altura do elemento pai (body) */
-  position: absolute; /* Posição absoluta */
-  top: 0; /* Alinha o topo do sidebar com o topo do body */
-  left: 0; /* Alinha a esquerda do sidebar com a esquerda do body */
-  bottom: 0; /* Alinha o rodapé do sidebar com o rodapé do body */
+  margin: 20px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  color:#6e2da7;
 }
 
-#content {
-  margin-left: 270px; /* Deixa espaço à esquerda do conteúdo para acomodar o sidebar */
+.left-section {
+  width: 45%;
   padding: 20px;
+  background-color: #fbb125;
+  border-right: 1px solid #ccc;
 }
 
-button {
-  font-family: "Press Start 2P", cursive;
-  background-color: #333;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Adicionando sombra */
+.left-section h1 {
+  font-size: 24px;
 }
 
-button:hover {
-  background-color: #555;
-}
-
-select {
-  font-family: "Press Start 2P", cursive;
-  padding: 5px;
-  width: 100%;
-  margin-top: 10px;
-}
-
-#valor-input {
-  margin-top: 10px;
-}
-
-#output {
+.left-section h2 {
+  font-size: 20px;
   margin-top: 20px;
 }
 
-#saldo {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-#historico {
+.left-section form {
   margin-top: 10px;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
-
-body,
-button,
-select {
-  font-family: "Press Start 2P", cursive;
+.left-section label {
+  font-weight: bold;
 }
+
+.left-section input,
+.left-section select,
+.left-section button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+.right-section {
+  width: 45%;
+  padding: 20px;
+}
+
+.right-section h2 {
+  font-size: 20px;
+}
+
+.right-section ul {
+  list-style: none;
+  padding: 10px 0;
+}
+
+.right-section p {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+footer {
+  background-color: #6e2da7;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+
+/* Adicione mais estilos conforme necessário */
