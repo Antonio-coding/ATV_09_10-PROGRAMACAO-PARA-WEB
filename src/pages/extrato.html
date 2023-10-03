@@ -5,18 +5,19 @@
   <meta charset="UTF-8">
   <title>Sua Página</title>
   <link rel="stylesheet" href="../../style/style.css">
+
 </head>
 
 <body>
-   <!-- Incluindo o cabeçalho -->
+  <!-- Incluindo o cabeçalho -->
   <div id="header-container"></div>
   <div class="container">
     <section class="left-section">
-      <h1>Gerenciador de Contas Bancárias</h1>
-      <h2>Inserir Detalhes da Conta</h2>
+      <h1>Gerenciador de transações</h1>
+
+      <h2>Operações Bancárias</h2>
       <!-- Instruções para o Usuário -->
       <div id="instructions" class="hidden">
-        <h2>Operações Bancárias</h2>
         <p>Para realizar operações bancárias, siga estas etapas:</p>
         <ol>
           <li>
@@ -46,8 +47,8 @@
           </li>
         </ol>
       </div>
-       <!-- Botão para Expandir/Recolher -->
-    <button id="toggleButton" onclick="toggleInstructions()">Expandir ▼</button>
+      <!-- Botão para Expandir/Recolher -->
+      <button id="toggleButton">Expandir ▼</button>
 
       <form id="conta-form">
 
@@ -58,12 +59,12 @@
           <option value="universitaria">Conta Universitária</option>
         </select>
         <br>
-        <label for="saldo">Saldo:</label>
-        <input type="number" id="saldo" name="saldo" required>
+        <label for="valor">Valor:</label>
+        <input type="number" id="valor" name="valor" required>
         <br>
-        <button type="button" id="inserir">Inserir</button>
-        <button type="button" id="deletar">Deletar</button>
-        <button type="button" id="visualizar">Visualizar</button>
+        <button type="button" id="depositar">depositar</button>
+        <button type="button" id="sacar">sacar</button>
+        <button type="button" id="extrato">extrato</button>
       </form>
     </section>
     <section class="right-section">
@@ -78,8 +79,9 @@
   </div>
   <div id="footer-container"></div>
 
+  <script type="module" src="../js/main.js"></script>
 
-  <script src="../js/main.js" type="module"></script>
+
 </body>
 
 </html>

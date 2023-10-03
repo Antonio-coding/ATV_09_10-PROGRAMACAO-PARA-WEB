@@ -4,7 +4,7 @@ let saldo = 1000;
 const historicoTransacoes = [];
 let saldoVisivel = false; // Variável para controlar se o saldo está visível
 
-function adicionarValor() {
+export function adicionarValor() {
   const valorInput = document.getElementById("valor");
   const valor = parseFloat(valorInput.value);
   valorInput.value = ""; // Limpar o campo de valor após adicionar

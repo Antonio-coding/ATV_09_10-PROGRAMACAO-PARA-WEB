@@ -1,6 +1,6 @@
-const ContaBancaria = require("./ContaBancaria");
+import { ContaBancaria } from "./ContaBancaria";
 
-class ContaCorrente extends ContaBancaria {
+export class ContaCorrente extends ContaBancaria {
     constructor(agencia, numero, cartaoCredito = false) {
         super(agencia, numero); 
         this.tipo = "Conta Corrente"; 
@@ -29,4 +29,3 @@ console.log("Cartão de Crédito da Conta Corrente: " + minhaContaCorrente.carta
 minhaContaCorrente.cartaoCredito = false; 
 console.log("Novo estado do Cartão de Crédito da Conta Corrente: " + minhaContaCorrente.cartaoCredito); 
 
-module.exports = ContaCorrente;
