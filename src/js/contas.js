@@ -1,14 +1,21 @@
+import ContaBancaria from '/ContaBancaria';
+// Add an event listener to the "Inserir" button
+document.getElementById("inserir").addEventListener("click", function () {
+    // Get the values from the form fields
+    const agencia = document.getElementById("agencia").value;
+    const numero = document.getElementById("numero").value;
+    const tipo = document.getElementById("tipo").value;
+    const saldo = parseFloat(document.getElementById("saldo").value);
 
-// Trabalho da atividade 7 onde era gerenciar a orientação objeto de um sistema conta bancaria 
+    // Create an instance of ContaBancaria with the provided information
+     const conta = new ContaBancaria(agencia, numero, tipo, saldo);
 
-const ContaCorrente = require('../src/ContaCorrente');
-const ContaPoupanca = require('../src/ContaPoupanca');
-const ContaUniversitaria = require('../src/ContaUniversitaria');
+    // You can now work with the 'conta' object as needed
+    console.log("Nova conta criada:", conta);
 
-const minhaContaCorrente = new ContaCorrente("001", "12345", true);
-const minhaContaPoupanca = new ContaPoupanca("002", "54321");
-const minhaContaUniversitaria = new ContaUniversitaria("003", "67890");
+    // Optionally, you can reset the form fields
+    document.getElementById("agencia").value = "";
+    document.getElementById("numero").value = "";
+    document.getElementById("saldo").value = "";
+});
 
-console.log("Conta Corrente: " + minhaContaCorrente.saldo);
-console.log("Conta Poupanca: " + minhaContaPoupanca.saldo); 
-console.log("Conta Universitaria: " + minhaContaUniversitaria.saldo);

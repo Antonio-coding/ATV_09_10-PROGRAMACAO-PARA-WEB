@@ -1,21 +1,21 @@
-import { saldo } from './../transacoes';
 
+import { conta } from '../contas.js';
 
-function ContaBancaria() {
-  constructor(agencia, numero, tipo = "ContaCorrente", saldo = 0) {
+class ContaBancaria extends conta {
+  constructor(agencia, numero, tipo, saldo) {
     this.agencia = agencia;
     this.numero = numero;
     this.tipo = tipo;
     this._saldo = saldo; // Usamos um atributo privado comummente com prefixo _ para o saldo
   }
 
-    // Getter para obter o saldo
-    get saldo() {
+  // Getter para obter o saldo
+  get saldo() {
     return this._saldo;
   }
 
-    // Setter para definir o saldo
-    set saldo(valor) {
+  // Setter para definir o saldo
+  set saldo(valor) {
     this._saldo = valor;
   }
 
@@ -40,5 +40,5 @@ function ContaBancaria() {
       return false;
     }
   }
-};
-
+}
+module.exports = ContaBancaria;

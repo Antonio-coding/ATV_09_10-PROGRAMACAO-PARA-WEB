@@ -98,6 +98,7 @@ header nav ul li a:hover {
 
 #instructions {
   display: none; 
+  padding: 1.5rem;
 }
 
 .hidden {

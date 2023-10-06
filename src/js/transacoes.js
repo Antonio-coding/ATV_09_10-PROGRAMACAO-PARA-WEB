@@ -57,7 +57,7 @@ function verHistoricoTransacoes() {
   }
 }
 
-function atualizarSaldoNaTela() {
+export function atualizarSaldoNaTela() {
   const saldoDiv = document.getElementById("saldo");
 
   if (saldoVisivel) {
