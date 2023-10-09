@@ -3,62 +3,20 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gerenciador de Contas Bancárias</title>
-  <link rel="stylesheet" href="./style/style.css">
+  <title>Sua Página</title>
+  <link rel="stylesheet" href="../../style/style.css">
+
 </head>
 
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="index.html">Início</a></li>
-        <li><a href="src\pages\extrato.html">Extrato</a></li>
-        <li><a href="src\pages\about.html">Sobre</a></li>
-        <li><a href="src\pages\contact.html">Contato</a></li>
-      </ul>
-    </nav>
-  </header>
-  <div class="container">
-    <section class="left-section">
-      <h1>Gerenciador de Contas Bancárias</h1>
-      <h2>Inserir Detalhes da Conta</h2>
-      <form id="conta-form">
-        <label for="agencia">Agência:</label>
-        <input type="text" id="agencia" name="agencia" required>
-        <br>
-        <label for="numero">Número da Conta:</label>
-        <input type="text" id="numero" name="numero" required>
-        <br>
-        <label for="tipo">Tipo de Conta:</label>
-        <select id="tipo" name="tipo">
-          <option value="corrente">Conta Corrente</option>
-          <option value="poupanca">Conta Poupança</option>
-          <option value="universitaria">Conta Universitária</option>
-        </select>
-        <br>
-        <label for="saldo">Saldo:</label>
-        <input type="number" id="saldo" name="saldo" required>
-        <br>
-        <button type="button" id="inserir">Inserir</button>
-        <button type="button" id="deletar">Deletar</button>
-        <button type="button" id="visualizar">Visualizar</button>
-      </form>
-    </section>
-    <section class="right-section">
-      <h2>Extrato</h2>
-      <ul id="extrato">
-        <!-- Extrato será exibido aqui -->
-      </ul>
-      <h2>Saldo Atual</h2>
-      <p id="saldo-valor">$1000.00</p>
-      <!-- Saldo será atualizado pelo JavaScript -->
-    </section>
-  </div>
-  <footer id="footer">
-    <p>&copy; 2023 Gerenciador de Contas Bancárias - Antônio Thiago Neto</p>
-  </footer>
-  <script src="src\js\main.js"></script>
+  <!-- Incluindo o cabeçalho -->
+  <div id="header-container"></div>
+
+  <div id="footer-container"></div>
+
+  <script type="module" src="src/js/main.js"></script>
+
+
 </body>
 
 </html>

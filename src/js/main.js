@@ -1,17 +1,17 @@
+// main.js
+
 import { includeHeader } from './fetch/header.js';
 import { includeFooter } from './fetch/footer.js';
-import { toggleInstructions } from './components/expand.js'; // Correct the path to 'components'
-import * as custom from './fetch/custom.js'; // Import all functions from custom.js
+import { toggleInstructions } from './components/expand.js';
+import './components/Validation.js'; // Importe o arquivo de validação
 
 includeFooter();
 includeHeader();
-handleExtrato();
 
-// Update the event listeners using the functions from custom.js
+// Atualize o evento de clique no botão de instruções
 document.getElementById('toggleButton').addEventListener('click', () => {
     toggleInstructions();
 });
 
-document.getElementById('depositar').addEventListener('click', custom.handleDeposit);
-document.getElementById('sacar').addEventListener('click', custom.handleWithdrawal);
-document.getElementById('extrato').addEventListener('click', custom.handleExtrato);
+// Não é necessário mais importar as funções customizadas para depositar, sacar e extrato
+// Você pode adicionar essas importações se precisar dessas funcionalidades posteriormente
