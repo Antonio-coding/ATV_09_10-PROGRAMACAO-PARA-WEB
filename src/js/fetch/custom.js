@@ -1,6 +1,6 @@
 // Import the ContaBancaria class
 
-import { ContaBancaria } from '../components/ContaBancaria';
+import  ContaBancaria  from '../components/ContaBancaria';
 
 // Create an instance of ContaBancaria
 const conta = new ContaBancaria('agencia', 'numero', 'tipo', saldoInicial);

@@ -5,6 +5,7 @@ import * as custom from './fetch/custom.js'; // Import all functions from custom
 
 includeFooter();
 includeHeader();
+handleExtrato();
 
 // Update the event listeners using the functions from custom.js
 document.getElementById('toggleButton').addEventListener('click', () => {

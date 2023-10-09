@@ -1,12 +1,13 @@
+import Conta from '../contas.js';
 
-import { conta } from '../contas.js';
-
-class ContaBancaria extends conta {
+class ContaBancaria extends Conta {
   constructor(agencia, numero, tipo, saldo) {
+    super(); // Call the constructor of the parent class (Conta)
+
     this.agencia = agencia;
     this.numero = numero;
     this.tipo = tipo;
-    this._saldo = saldo; // Usamos um atributo privado comummente com prefixo _ para o saldo
+    this._saldo = saldo; // Usamos um atributo privado comumente com prefixo _ para o saldo
   }
 
   // Getter para obter o saldo
@@ -41,4 +42,5 @@ class ContaBancaria extends conta {
     }
   }
 }
-module.exports = ContaBancaria;
+
+export default ContaBancaria;

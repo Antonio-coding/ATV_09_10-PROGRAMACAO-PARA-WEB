@@ -1,21 +1,22 @@
-import ContaBancaria from '/ContaBancaria';
-// Add an event listener to the "Inserir" button
+// Suponha que você já tenha importado a classe ContaBancaria
+import ContaBancaria from './components/ContaBancaria';
+
+// Event listener para o botão "Inserir"
 document.getElementById("inserir").addEventListener("click", function () {
-    // Get the values from the form fields
+    // Obter os valores dos campos do formulário
     const agencia = document.getElementById("agencia").value;
     const numero = document.getElementById("numero").value;
     const tipo = document.getElementById("tipo").value;
     const saldo = parseFloat(document.getElementById("saldo").value);
 
-    // Create an instance of ContaBancaria with the provided information
-     const conta = new ContaBancaria(agencia, numero, tipo, saldo);
+    // Criar uma instância de ContaBancaria com as informações fornecidas
+    const conta = new ContaBancaria(agencia, numero, tipo, saldo);
 
-    // You can now work with the 'conta' object as needed
+    // Agora você pode trabalhar com o objeto 'conta' conforme necessário
     console.log("Nova conta criada:", conta);
 
-    // Optionally, you can reset the form fields
+    // Opcionalmente, você pode redefinir os campos do formulário
     document.getElementById("agencia").value = "";
     document.getElementById("numero").value = "";
     document.getElementById("saldo").value = "";
 });
-
