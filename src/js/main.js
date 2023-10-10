@@ -1,17 +1,35 @@
-// main.js
-
 import { includeHeader } from './fetch/header.js';
 import { includeFooter } from './fetch/footer.js';
 import { toggleInstructions } from './components/expand.js';
-import './components/Validation.js'; // Importe o arquivo de validação
+import { validarCampos } from './components/Validation.js';
 
 includeFooter();
 includeHeader();
 
-// Atualize o evento de clique no botão de instruções
-document.getElementById('toggleButton').addEventListener('click', () => {
-    toggleInstructions();
-});
+document.addEventListener("DOMContentLoaded", () => {
 
-// Não é necessário mais importar as funções customizadas para depositar, sacar e extrato
-// Você pode adicionar essas importações se precisar dessas funcionalidades posteriormente
+    const el = document.getElementById("entrar");
+    if (el) {
+        el.addEventListener('click', function () {
+            if (validarCampos()) {
+                window.location.href = "../pages/extrato.html";
+            }
+        });
+    }
+    
+    const extratoLink = document.getElementById("extrato");
+    if (extratoLink) {
+        extratoLink.addEventListener('click', function (event) {
+            event.preventDefault();
+            alert("Você precisa fazer login para acessar o extrato.");
+        });
+    }
+
+    
+    const al = document.getElementById("toggleButton");
+    if (al) {
+        al.addEventListener('click', toggleInstructions);
+    }
+
+    
+});
