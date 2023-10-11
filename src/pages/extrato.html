@@ -11,6 +11,7 @@
 <body>
   <!-- Incluindo o cabeçalho -->
   <div id="header-container"></div>
+
   <div class="container">
     <section class="left-section">
       <h1>Gerenciador de transações</h1>
@@ -47,6 +48,7 @@
           </li>
         </ol>
       </div>
+
       <!-- Botão para Expandir/Recolher -->
       <button id="toggleButton">Expandir ▼</button>
 
@@ -62,23 +64,30 @@
         <label for="valor">Valor:</label>
         <input type="number" id="valor" name="valor" required>
         <br>
-        <button type="button" id="depositar">depositar</button>
-        <button type="button" id="sacar">sacar</button>
-        <button type="button" id="extrato">extrato</button>
+        <button type="button" id="depositar">Depositar</button>
+        <button type="button" id="sacar">Sacar</button>
+        <button type="button" id="exibirExtrato">Exibir Extrato</button>
       </form>
     </section>
+
     <section class="right-section">
+      <h2>Detalhes da Conta</h2>
+      <p>Agência: <span id="agenciaExtrato"></span></p>
+      <p>Número da Conta: <span id="numeroExtrato"></span></p>
+
       <h2>Extrato</h2>
-      <ul id="exibirExtrato">
+      <ul id="exibirExtratoEmTela">
         <h2>Saldo Atual</h2>
-        <p id="exibirExtrato"></p>
-        
+        <p id="saldoAtual"></p>
+
       </ul>
     </section>
   </div>
   <div id="footer-container"></div>
 
-  <script type="module" src="../js/main.js"></script>
+  <script type="module" src="../js/main.js">
+   
+  </script>
 
 
 </body>

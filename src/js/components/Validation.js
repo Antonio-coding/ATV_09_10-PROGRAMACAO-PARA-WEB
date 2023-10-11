@@ -1,11 +1,12 @@
 // validation.js
 
+
 // Função para validar os campos e redirecionar para a página de extrato
 export function validarCampos() {
     const agencia = document.getElementById("agencia").value;
     const numero = document.getElementById("numero").value;
 
-    
+
     if (agencia && numero) {
         window.location.href = "../pages/extrato.html";
         return true;
@@ -15,5 +16,4 @@ export function validarCampos() {
     }
 
 }
-
 

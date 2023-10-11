@@ -1,22 +1,34 @@
 // Suponha que você já tenha importado a classe ContaBancaria
 import ContaBancaria from './ContaBancaria';
 
-// Event listener para o botão "Inserir"
-document.getElementById("inserir").addEventListener("click", function () {
+// Event listener para o botão "Entrar"
+document.getElementById("entrar").addEventListener("click", function () {
     // Obter os valores dos campos do formulário
     const agencia = document.getElementById("agencia").value;
     const numero = document.getElementById("numero").value;
-    const tipo = document.getElementById("tipo").value;
-    const saldo = parseFloat(document.getElementById("saldo").value);
+
+    // Definir um saldo inicial de 1000 BRL
+    const saldo = 1500;
+
+    // Armazenar os valores no localStorage
+    localStorage.setItem('agencia', agencia);
+    localStorage.setItem('numero', numero);
+    // Armazenar o saldo no localStorage
+    localStorage.setItem('saldo', saldo);
 
     // Criar uma instância de ContaBancaria com as informações fornecidas
-    const conta = new ContaBancaria(agencia, numero, tipo, saldo);
+    const conta = new ContaBancaria(agencia, numero, saldo);
 
-    // Agora você pode trabalhar com o objeto 'conta' conforme necessário
+    // O objeto 'conta' agora contém as informações da conta
+    // Você pode fazer o que precisar com essa instância, como armazená-la localmente
     console.log("Nova conta criada:", conta);
 
-    // Opcionalmente, você pode redefinir os campos do formulário
-    document.getElementById("agencia").value = "";
-    document.getElementById("numero").value = "";
-    document.getElementById("saldo").value = "";
+    // Redirecione para a página de extrato
+    window.location.href = "../pages/extrato.html";
 });
+
+// Recupera o saldo do localStorage
+const saldo = parseFloat(localStorage.getItem('saldo'));
+
+// Exibe o saldo na página de extrato
+document.getElementById("saldoAtual").textContent = `Saldo Atual: R$ ${saldo.toFixed(2)}`;
