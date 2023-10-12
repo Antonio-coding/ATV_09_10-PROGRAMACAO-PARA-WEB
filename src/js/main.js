@@ -1,30 +1,36 @@
+
 // Importe os módulos necessários
 import { includeHeader } from './fetch/header.js';
 import { includeFooter } from './fetch/footer.js';
 import { toggleInstructions } from './components/expand.js';
+import { ContaCorrente } from './components/ContaCorrente.js';
+import { ContaPoupanca } from './components/ContaPoupanca.js';
+import { ContaUniversitaria } from './components/ContaUniversitaria.js';
+import { ContaBancaria } from './components/ContaBancaria.js';
+import { adicionarTransacao } from "./components/extrato.js";
 import { validarCampos } from './components/Validation.js';
+import './components/extrato.js';
 
 // Função para lidar com a ação "Entrar"
 function handleEntrar() {
     if (validarCampos()) {
         const agencia = document.getElementById("agencia").value;
-        const numero = document.getElementById("numero").value;    
+        const numero = document.getElementById("numero").value;
         const saldo = 1000;
 
         // Armazena os valores no localStorage
         localStorage.setItem('agencia', agencia);
-        localStorage.setItem('numero', numero);       
+        localStorage.setItem('numero', numero);
         localStorage.setItem('saldo', saldo);
-        
+
         const conta = new ContaBancaria(agencia, numero, saldo);
-        
+
         console.log("Nova conta criada:", conta);
 
         // Redirecione para a página de extrato
         window.location.href = "../pages/extrato.html";
     }
 }
-
 
 // Função para lidar com o link de extrato
 function handleExtratoLink(event) {
@@ -38,40 +44,55 @@ function handleExtratoLink(event) {
     }
 }
 
+// Função para criar e exibir contas
+function criarEExibirContas(agencia, numero) {
+    const minhaContaCorrente = new ContaCorrente(agencia, numero, true);
+    const minhaContaPoupanca = new ContaPoupanca(agencia, numero);
+    const minhaContaUniversitaria = new ContaUniversitaria(agencia, numero);
+
+    console.log("Conta corrente: " + minhaContaCorrente.saldo);
+    console.log("Conta Poupanca: " + minhaContaPoupanca.saldo);
+    console.log("Conta Universitaria: " + minhaContaUniversitaria.saldo);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-    // Inclua o cabeçalho e rodapé
     includeFooter();
     includeHeader();
-
-    // Adicione um ouvinte de evento para o botão "Entrar"
-    const el = document.getElementById("entrar");
-    if (el) {
-        el.addEventListener('click', handleEntrar);
-    }
+    adicionarTransacao();
+    handleEntrar();
     
-    // Recupera os valores do localStorage
+
     const agencia = localStorage.getItem('agencia');
     const numero = localStorage.getItem('numero');
-    // Recupera o saldo do localStorage
     const saldo = parseFloat(localStorage.getItem('saldo'));
 
-    // Exibe o saldo na página de extrato
-    document.getElementById("saldoAtual").textContent = `Saldo Atual: R$ ${saldo.toFixed(2)}`;
-
-
-    // Exibe os valores na página de extrato
-    document.getElementById("agenciaExtrato").textContent = agencia;
-    document.getElementById("numeroExtrato").textContent = numero;
-
-    // Adicione um ouvinte de evento para o botão de instruções
-    const al = document.getElementById("toggleButton");
-    if (al) {
-        al.addEventListener('click', toggleInstructions);
+    const saldoAtualElement = document.getElementById("saldoAtual");
+    if (saldoAtualElement) {
+        saldoAtualElement.textContent = `Saldo Atual: R$ ${saldo.toFixed(2)}`;
     }
 
-    // Adicione um ouvinte de evento para o link de extrato
+    const agenciaExtratoElement = document.getElementById("agenciaExtrato");
+    if (agenciaExtratoElement) {
+        agenciaExtratoElement.textContent = agencia;
+    }
+
+    const numeroExtratoElement = document.getElementById("numeroExtrato");
+    if (numeroExtratoElement) {
+        numeroExtratoElement.textContent = numero;
+    }
+
+    const toggleButton = document.getElementById("toggleButton");
+    if (toggleButton) {
+        toggleButton.addEventListener('click', toggleInstructions);
+    }
+
     const extratoLink = document.getElementById("extrato");
     if (extratoLink) {
         extratoLink.addEventListener('click', handleExtratoLink);
     }
+
+    // Crie e exiba as contas
+    criarEExibirContas(agencia, numero);
+
+   
 });
