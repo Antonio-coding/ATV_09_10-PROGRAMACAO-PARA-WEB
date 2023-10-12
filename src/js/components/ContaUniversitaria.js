@@ -1,7 +1,8 @@
-const ContaBancaria = require("./ContaBancaria");
+
+import { ContaBancaria } from './ContaBancaria.js';
 
 
-class ContaUniversitaria extends ContaBancaria {
+export class ContaUniversitaria extends ContaBancaria {
     constructor(agencia, numero, tipo = "Conta Universitária", saldo = 0) {
       super(agencia, numero, tipo, saldo);
     }
@@ -24,27 +25,4 @@ class ContaUniversitaria extends ContaBancaria {
   }
   
 
-  const minhaContaUniversitaria = new ContaUniversitaria("003", "67890");
-  
-  console.log("Agência da Conta Universitária: " + minhaContaUniversitaria.agencia);
-  console.log("Número da Conta Universitária: " + minhaContaUniversitaria.numero);
-  console.log("Tipo da Conta Universitária: " + minhaContaUniversitaria.tipo);
-  console.log("Saldo da Conta Universitária: " + minhaContaUniversitaria.saldo);
-  
-  minhaContaUniversitaria.depositar(1000); 
-  console.log("Novo Saldo após depósito de 1000 reais: " + minhaContaUniversitaria.saldo);
-  
-  if (minhaContaUniversitaria.sacar(300)) {
-    console.log("Saque de 300 reais bem-sucedido. Novo Saldo: " + minhaContaUniversitaria.saldo);
-  } else {
-    console.log("Tentativa de saque de 300 reais falhou. Saldo atual: " + minhaContaUniversitaria.saldo);
-  }
-  
-  if (minhaContaUniversitaria.sacar(800)) {
-    console.log("Saque de 800 reais bem-sucedido. Novo Saldo: " + minhaContaUniversitaria.saldo);
-  } else {
-    console.log("Tentativa de saque de 800 reais falhou. Saldo atual: " + minhaContaUniversitaria.saldo);
-  }
-  
-
-  module.exports = ContaUniversitaria;
+ 
