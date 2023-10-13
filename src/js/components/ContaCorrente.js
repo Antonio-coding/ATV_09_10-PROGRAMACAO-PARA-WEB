@@ -17,10 +17,3 @@ export class ContaCorrente extends ContaBancaria {
         this._cartaoCredito = valor;
     }
 }
-
-
-
-
-
-
-

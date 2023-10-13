@@ -1,36 +1,16 @@
+// main.js
 
-// Importe os módulos necessários
 import { includeHeader } from './fetch/header.js';
 import { includeFooter } from './fetch/footer.js';
 import { toggleInstructions } from './components/expand.js';
-import { ContaCorrente } from './components/ContaCorrente.js';
-import { ContaPoupanca } from './components/ContaPoupanca.js';
-import { ContaUniversitaria } from './components/ContaUniversitaria.js';
-import { ContaBancaria } from './components/ContaBancaria.js';
-import { adicionarTransacao } from "./components/extrato.js";
-import { validarCampos } from './components/Validation.js';
+
+import { verHistoricoTransacoes } from "./components/extrato.js";
+import { handleEntrar } from './components/Validation.js';
 import './components/extrato.js';
+import { atualizarBotoesConta, criarEExibirContas, handleDeposito, handleSaque } from './components/transacoes.js';
 
-// Função para lidar com a ação "Entrar"
-function handleEntrar() {
-    if (validarCampos()) {
-        const agencia = document.getElementById("agencia").value;
-        const numero = document.getElementById("numero").value;
-        const saldo = 1000;
 
-        // Armazena os valores no localStorage
-        localStorage.setItem('agencia', agencia);
-        localStorage.setItem('numero', numero);
-        localStorage.setItem('saldo', saldo);
-
-        const conta = new ContaBancaria(agencia, numero, saldo);
-
-        console.log("Nova conta criada:", conta);
-
-        // Redirecione para a página de extrato
-        window.location.href = "../pages/extrato.html";
-    }
-}
+criarEExibirContas(localStorage.setItem('agencia', 'numero', 'saldo'));
 
 // Função para lidar com o link de extrato
 function handleExtratoLink(event) {
@@ -44,32 +24,67 @@ function handleExtratoLink(event) {
     }
 }
 
-// Função para criar e exibir contas
-function criarEExibirContas(agencia, numero) {
-    const minhaContaCorrente = new ContaCorrente(agencia, numero, true);
-    const minhaContaPoupanca = new ContaPoupanca(agencia, numero);
-    const minhaContaUniversitaria = new ContaUniversitaria(agencia, numero);
 
-    console.log("Conta corrente: " + minhaContaCorrente.saldo);
-    console.log("Conta Poupanca: " + minhaContaPoupanca.saldo);
-    console.log("Conta Universitaria: " + minhaContaUniversitaria.saldo);
-}
 
+
+let extratoVisivel = false; // Variável para controlar o estado do extrato
 document.addEventListener("DOMContentLoaded", () => {
     includeFooter();
     includeHeader();
-    adicionarTransacao();
-    handleEntrar();
+
+    const verHistoricoTransacoesElement = document.getElementById('exibirExtrato');
+
+    if (verHistoricoTransacoesElement) {
+        verHistoricoTransacoesElement.onclick = function () {
+            const historico = document.getElementById("historico");
+
+            if (extratoVisivel) {
+                // Extrato está visível, então oculte
+                historico.style.display = "none";
+                extratoVisivel = false;
+            } else {
+                // Extrato não está visível, então exiba
+                historico.style.display = "block";
+                extratoVisivel = true;
+
+                verHistoricoTransacoes();
+            }
+        }
+    }
+
+    const tipoContaSelectElement = document.getElementById('tipo');
+    const cartaoCreditoButton = document.getElementById('cartaoCreditoButton');
+
+    if (tipoContaSelectElement) {
+        tipoContaSelectElement.addEventListener("change", () => {
+            const selectedValue = tipoContaSelectElement.value;
+            if (selectedValue === "corrente") {
+                cartaoCreditoButton.style.display = "block";
+            } else {
+                cartaoCreditoButton.style.display = "none";
+            }
+        });
+    }
+
+    const ativarCartaoCreditoButtonElement = document.getElementById('ativarCartaoCredito');
+
     
+    if (ativarCartaoCreditoButtonElement) {
+        ativarCartaoCreditoButtonElement.onclick = function () {
+            ativarCartaoDeCreditoDaContaCorrente();
+        }
+    }
+
+ 
+
+    const entrarElement = document.getElementById('entrar')
+    if (entrarElement) {
+        entrarElement.addEventListener('click', handleEntrar)
+    };
 
     const agencia = localStorage.getItem('agencia');
     const numero = localStorage.getItem('numero');
     const saldo = parseFloat(localStorage.getItem('saldo'));
-
-    const saldoAtualElement = document.getElementById("saldoAtual");
-    if (saldoAtualElement) {
-        saldoAtualElement.textContent = `Saldo Atual: R$ ${saldo.toFixed(2)}`;
-    }
 
     const agenciaExtratoElement = document.getElementById("agenciaExtrato");
     if (agenciaExtratoElement) {
@@ -79,6 +94,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const numeroExtratoElement = document.getElementById("numeroExtrato");
     if (numeroExtratoElement) {
         numeroExtratoElement.textContent = numero;
+    }
+
+    const saldoAtualElement = document.getElementById("saldoAtual");
+    if (saldoAtualElement) {
+        saldoAtualElement.textContent = `Saldo Atual: R$ ${saldo.toFixed(2)}`;
     }
 
     const toggleButton = document.getElementById("toggleButton");
@@ -91,8 +111,11 @@ document.addEventListener("DOMContentLoaded", () => {
         extratoLink.addEventListener('click', handleExtratoLink);
     }
 
-    // Crie e exiba as contas
-    criarEExibirContas(agencia, numero);
 
-   
+ 
+    atualizarBotoesConta();
+  
+    handleDeposito();
+    handleSaque();
+
 });
