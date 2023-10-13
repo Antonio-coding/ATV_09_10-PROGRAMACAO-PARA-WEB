@@ -3,14 +3,13 @@
 import { includeHeader } from './fetch/header.js';
 import { includeFooter } from './fetch/footer.js';
 import { toggleInstructions } from './components/expand.js';
-
 import { verHistoricoTransacoes } from "./components/extrato.js";
 import { handleEntrar } from './components/Validation.js';
 import './components/extrato.js';
 import { atualizarBotoesConta, criarEExibirContas, handleDeposito, handleSaque } from './components/transacoes.js';
 
 
-criarEExibirContas(localStorage.setItem('agencia', 'numero', 'saldo'));
+criarEExibirContas(localStorage.setItem('agencia', 'numero', "tipo", 'saldo'));
 
 // Função para lidar com o link de extrato
 function handleExtratoLink(event) {
@@ -31,6 +30,7 @@ let extratoVisivel = false; // Variável para controlar o estado do extrato
 document.addEventListener("DOMContentLoaded", () => {
     includeFooter();
     includeHeader();
+
 
     const verHistoricoTransacoesElement = document.getElementById('exibirExtrato');
 
@@ -68,14 +68,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const ativarCartaoCreditoButtonElement = document.getElementById('ativarCartaoCredito');
 
-    
+
     if (ativarCartaoCreditoButtonElement) {
         ativarCartaoCreditoButtonElement.onclick = function () {
             ativarCartaoDeCreditoDaContaCorrente();
         }
     }
-
- 
 
     const entrarElement = document.getElementById('entrar')
     if (entrarElement) {
@@ -111,11 +109,10 @@ document.addEventListener("DOMContentLoaded", () => {
         extratoLink.addEventListener('click', handleExtratoLink);
     }
 
+    document.addEventListener("DOMContentLoaded", () => {
 
- 
-    atualizarBotoesConta();
-  
-    handleDeposito();
-    handleSaque();
-
+        handleDeposito();
+        handleSaque();
+        atualizarBotoesConta();
+    })
 });

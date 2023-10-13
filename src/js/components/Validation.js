@@ -1,7 +1,7 @@
 // validation.js
 // Função para validar os campos e redirecionar para a página de extrato
-export function validarCampos() {
-    
+function validarCampos() {
+
     const agencia = document.getElementById("agencia").value;
     const numero = document.getElementById("numero").value;
 
@@ -9,12 +9,12 @@ export function validarCampos() {
         // Redirecione para a página de extrato
         window.location.href = "../pages/extrato.html";
         return true;
-       
+
     } else {
         alert("Preencha todos os campos para acessar o extrato.");
         return false;
     }
-    
+
 }
 
 // Função para lidar com a ação "Entrar"
@@ -33,7 +33,7 @@ export function handleEntrar() {
 
         console.log("Nova conta criada:", conta);
 
-      
-        
+
+
     }
 }

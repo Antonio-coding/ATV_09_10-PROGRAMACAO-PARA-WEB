@@ -4,6 +4,10 @@ import { ContaCorrente } from './ContaCorrente.js';
 import { ContaPoupanca } from './ContaPoupanca.js';
 import { ContaUniversitaria } from './ContaUniversitaria.js';
 
+const tipoContaSelect = document.getElementById("tipo");
+const depositarButton = document.getElementById("depositar");
+const sacarButton = document.getElementById("sacar");
+
 // Declare as variáveis globais para armazenar as contas
 let minhaContaCorrente;
 let minhaContaPoupanca;
@@ -23,22 +27,30 @@ export function criarEExibirContas(agencia, numero, saldo) {
 
 export function handleDeposito() {
     const valorDeposito = parseFloat(document.getElementById("valor").value);
-    minhaContaCorrente.depositar(valorDeposito);
-    minhaContaPoupanca.depositar(valorDeposito);
-    minhaContaUniversitaria.depositar(valorDeposito);
+    const tipoContaSelecionado = tipoContaSelect.value;
+
+    if (tipoContaSelecionado === "corrente") {
+        minhaContaCorrente.depositar(valorDeposito);
+    } else if (tipoContaSelecionado === "poupanca") {
+        minhaContaPoupanca.depositar(valorDeposito);
+    } else if (tipoContaSelecionado === "universitaria") {
+        minhaContaUniversitaria.depositar(valorDeposito);
+    }
 }
 
 export function handleSaque() {
     const valorSaque = parseFloat(document.getElementById("valor").value);
-    minhaContaCorrente.sacar(valorSaque);
-    minhaContaPoupanca.sacar(valorSaque);
-    minhaContaUniversitaria.sacar(valorSaque);
+    const tipoContaSelecionado = tipoContaSelect.value;
+
+    if (tipoContaSelecionado === "corrente") {
+        minhaContaCorrente.sacar(valorSaque);
+    } else if (tipoContaSelecionado === "poupanca") {
+        minhaContaPoupanca.sacar(valorSaque);
+    } else if (tipoContaSelecionado === "universitaria") {
+        minhaContaUniversitaria.sacar(valorSaque);
+    }
 }
 
-
-const tipoContaSelect = document.getElementById('tipo');
-const depositarButton = document.getElementById("depositar");
-const sacarButton = document.getElementById("sacar");
 
 // Função para ativar/desativar os botões com base no tipo de conta selecionado
 export function atualizarBotoesConta() {

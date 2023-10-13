@@ -1,6 +1,6 @@
 
 export class ContaBancaria {
-  constructor(agencia, numero, tipo = "", saldo = 500) {
+  constructor(agencia, numero, tipo = "", saldo = 0) {
     this.agencia = agencia;
     this.numero = numero;
     this.tipo = tipo;
