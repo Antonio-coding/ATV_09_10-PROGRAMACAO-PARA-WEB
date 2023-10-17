@@ -9,7 +9,7 @@ import './components/extrato.js';
 import { atualizarBotoesConta, criarEExibirContas, handleDeposito, handleSaque } from './components/transacoes.js';
 
 
-criarEExibirContas(localStorage.setItem('agencia', 'numero', "tipo", 'saldo'));
+criarEExibirContas();
 
 // Função para lidar com o link de extrato
 function handleExtratoLink(event) {

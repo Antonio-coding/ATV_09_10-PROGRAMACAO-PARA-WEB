@@ -43,7 +43,6 @@ header nav ul li a:hover {
   text-decoration: underline; /* Sublinha os links ao passar o mouse */
 }
 
-
 .container {
   display: flex;
   justify-content: space-between;
@@ -51,7 +50,7 @@ header nav ul li a:hover {
   margin: 20px;
   background-color: #fff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  color:#6e2da7;
+  color: #6e2da7;
 }
 
 .left-section {
@@ -97,7 +96,7 @@ header nav ul li a:hover {
 }
 
 #instructions {
-  display: none; 
+  display: none;
   padding: 1.5rem;
 }
 
@@ -134,5 +133,50 @@ footer {
   width: 100%;
 }
 
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.introduction {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #6e2da7;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 1rem;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #fbb125;
+  color: black;
+}
 
 /* Adicione mais estilos conforme necessário */
