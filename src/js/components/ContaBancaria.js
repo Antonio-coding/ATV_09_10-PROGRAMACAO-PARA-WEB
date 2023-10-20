@@ -1,10 +1,10 @@
 
 export class ContaBancaria {
-  constructor(agencia, numero, tipo = "", saldo = 0) {
-    this.agencia = agencia;
-    this.numero = numero;
-    this.tipo = tipo;
-    this._saldo = saldo;
+  constructor(agencia, numero, tipo, saldo) {
+    this.agencia = parseFloat(localStorage.getItem("agencia"));
+    this.numero = parseFloat(localStorage.getItem("numero"));
+    this.tipo = localStorage.getItem("tipo");
+    this._saldo = parseFloat(localStorage.getItem("saldo"));
   }
 
   // Getter para obter o saldo

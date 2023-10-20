@@ -1,9 +1,9 @@
 import { ContaBancaria } from "./ContaBancaria.js";
 
 export class ContaCorrente extends ContaBancaria {
-    constructor(agencia, numero, cartaoCredito = false) {
+    constructor(agencia, numero,tipo, cartaoCredito) {
         super(agencia, numero);
-        this.tipo = "Conta Corrente";
+        this.tipo = tipo;
         this._cartaoCredito = cartaoCredito;
     }
 
