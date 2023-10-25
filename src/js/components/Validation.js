@@ -22,18 +22,25 @@ export function handleEntrar() {
     if (validarCampos()) {
         const agencia = document.getElementById("agencia").value;
         const numero = document.getElementById("numero").value;
-        const saldo = 0;
+        const tipo = document.getElementById("tipo").value;
+
+        // Define o saldo inicial com base no tipo de conta selecionado
+        let saldo = 0;
+        if (tipo === "universitaria") {
+            saldo = 100; // Saldo inicial da conta universitária
+        } else if (tipo === "corrente") {
+            saldo = 500; // Saldo inicial da conta corrente
+        } else if (tipo === "poupanca") {
+            saldo = 1000; // Saldo inicial da conta poupança
+        }
 
         // Armazena os valores no localStorage
         localStorage.setItem('agencia', agencia);
         localStorage.setItem('numero', numero);
+        localStorage.setItem('tipo', tipo);
         localStorage.setItem('saldo', saldo);
-
-        const conta = new ContaBancaria(agencia, numero, saldo);
-
-        console.log("Nova conta criada:", conta);
-
-
-
+        
+        // Redireciona para a página de extrato
+        window.location.href = "../pages/extrato.html";
     }
 }

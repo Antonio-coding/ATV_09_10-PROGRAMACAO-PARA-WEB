@@ -1,3 +1,4 @@
+// extrato.js
 
 const depositarButton = document.getElementById("depositar");
 const sacarButton = document.getElementById("sacar");
@@ -69,7 +70,23 @@ if (sacarButton) {
 
 
 function adicionarTransacao(transacao) {
-    let historicoTransacoes = JSON.parse(localStorage.getItem('historicoTransacoes'));
+    let historicoTransacoes = JSON.parse(localStorage.getItem('historicoTransacoes')) || []; // Inicialize como um array vazio se não existir
     historicoTransacoes.push(transacao);
     localStorage.setItem('historicoTransacoes', JSON.stringify(historicoTransacoes));
 }
+
+
+// Extrato.js
+
+export function exibirSaldo() {
+    const tipoConta = localStorage.getItem('tipo');
+    const saldo = parseFloat(localStorage.getItem('saldo'));
+    const saldoAtualElement = document.getElementById("saldoAtual");
+
+    if (saldoAtualElement) {
+        saldoAtualElement.textContent = `Saldo Atual (${tipoConta}): R$ ${saldo.toFixed(2)}`;
+    }
+}
+
+// Chame a função exibirSaldo na inicialização da página
+exibirSaldo();

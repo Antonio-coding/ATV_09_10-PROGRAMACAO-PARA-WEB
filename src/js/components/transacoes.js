@@ -1,21 +1,7 @@
-// transacoes.js
-
-import { ContaCorrente } from './ContaCorrente.js';
-import { ContaPoupanca } from './ContaPoupanca.js';
-import { ContaUniversitaria } from './ContaUniversitaria.js';
-
-const tipoContaSelect = document.getElementById("tipo");
-const depositarButton = document.getElementById("depositar");
-const sacarButton = document.getElementById("sacar");
-
-// Declare as variáveis globais para armazenar as contas
-let minhaContaCorrente;
-let minhaContaPoupanca;
-let minhaContaUniversitaria;
+// transacao.js
 
 // Função para criar e exibir contas
-export function criarEExibirContas(agencia, numero, saldo) {
-    // Obtenha os valores do localStorage quando criar as instâncias
+export function criarEExibirContas() {
     const agenciaCorrente = localStorage.getItem('agenciaCorrente');
     const numeroCorrente = localStorage.getItem("numeroCorrente");
     const saldoCorrente = parseFloat(localStorage.getItem("saldoCorrente"));
@@ -31,11 +17,9 @@ export function criarEExibirContas(agencia, numero, saldo) {
     const saldoUniversitaria = parseFloat(localStorage.getItem("saldoUniversitaria"));
     minhaContaUniversitaria = new ContaUniversitaria(agenciaUniversitaria, numeroUniversitaria, saldoUniversitaria);
 
-    console.log("Conta Corrente: ", minhaContaCorrente);
-    console.log("Conta Poupança: ", minhaContaPoupanca);
-    console.log("Conta Universitária: ", minhaContaUniversitaria);
+    // Atualiza o estado dos botões com base no tipo de conta selecionado
+    atualizarBotoesConta();
 }
-
 
 export function handleDeposito() {
     const valorDeposito = parseFloat(document.getElementById("valor").value);
@@ -48,6 +32,12 @@ export function handleDeposito() {
     } else if (tipoContaSelecionado === "universitaria") {
         minhaContaUniversitaria.depositar(valorDeposito);
     }
+    
+    // Atualiza o saldo no localStorage
+    localStorage.setItem('saldo' + tipoContaSelecionado.charAt(0).toUpperCase() + tipoContaSelecionado.slice(1), minhaContaCorrente.saldo);
+
+    // Atualiza a exibição do saldo
+    exibirSaldo();
 }
 
 export function handleSaque() {
@@ -61,20 +51,10 @@ export function handleSaque() {
     } else if (tipoContaSelecionado === "universitaria") {
         minhaContaUniversitaria.sacar(valorSaque);
     }
-}
+    
+    // Atualiza o saldo no localStorage
+    localStorage.setItem('saldo' + tipoContaSelecionado.charAt(0).toUpperCase() + tipoContaSelecionado.slice(1), minhaContaCorrente.saldo);
 
-
-// Função para ativar/desativar os botões com base no tipo de conta selecionado
-export function atualizarBotoesConta() {
-    const tipoContaSelecionado = tipoContaSelect.value;
-    if (tipoContaSelecionado === "corrente") {
-        depositarButton.disabled = false;
-        sacarButton.disabled = false;
-    } else if (tipoContaSelecionado === "poupanca") {
-        depositarButton.disabled = true;
-        sacarButton.disabled = true;
-    } else if (tipoContaSelecionado === "universitaria") {
-        depositarButton.disabled = true;
-        sacarButton.disabled = false;
-    }
+    // Atualiza a exibição do saldo
+    exibirSaldo();
 }
