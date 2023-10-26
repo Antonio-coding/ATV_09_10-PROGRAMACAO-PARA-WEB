@@ -5,9 +5,7 @@ const sacarButton = document.getElementById("sacar");
 const saldoAtualElement = document.getElementById("saldoAtual");
 let saldo = parseFloat(localStorage.getItem('saldo'));
 
-if (saldoAtualElement) {
-    saldoAtualElement.textContent = `Saldo Atual: R$ ${saldo.toFixed(2)}`;
-}
+
 
 if (depositarButton) {
     depositarButton.addEventListener('click', () => {
@@ -76,7 +74,7 @@ function adicionarTransacao(transacao) {
 }
 
 
-// Extrato.js
+
 
 export function exibirSaldo() {
     const tipoConta = localStorage.getItem('tipo');
@@ -88,5 +86,4 @@ export function exibirSaldo() {
     }
 }
 
-// Chame a função exibirSaldo na inicialização da página
-exibirSaldo();
+

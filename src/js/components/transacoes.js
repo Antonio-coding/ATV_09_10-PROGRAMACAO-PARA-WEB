@@ -1,5 +1,7 @@
 // transacao.js
 
+const tipoContaSelect = document.getElementById("tipoContaSelect");
+
 // Função para criar e exibir contas
 export function criarEExibirContas() {
     const agenciaCorrente = localStorage.getItem('agenciaCorrente');
@@ -32,7 +34,7 @@ export function handleDeposito() {
     } else if (tipoContaSelecionado === "universitaria") {
         minhaContaUniversitaria.depositar(valorDeposito);
     }
-    
+
     // Atualiza o saldo no localStorage
     localStorage.setItem('saldo' + tipoContaSelecionado.charAt(0).toUpperCase() + tipoContaSelecionado.slice(1), minhaContaCorrente.saldo);
 
@@ -51,10 +53,37 @@ export function handleSaque() {
     } else if (tipoContaSelecionado === "universitaria") {
         minhaContaUniversitaria.sacar(valorSaque);
     }
-    
+
     // Atualiza o saldo no localStorage
     localStorage.setItem('saldo' + tipoContaSelecionado.charAt(0).toUpperCase() + tipoContaSelecionado.slice(1), minhaContaCorrente.saldo);
 
     // Atualiza a exibição do saldo
     exibirSaldo();
+}
+
+
+// Função para ativar/desativar os botões com base no tipo de conta selecionado
+export function atualizarBotoesConta() {
+    const tipoContaSelecionado = tipoContaSelect.value;
+    if (tipoContaSelecionado === "corrente") {
+        depositarButton.disabled = false;
+        sacarButton.disabled = false;
+    } else if (tipoContaSelecionado === "poupanca") {
+        depositarButton.disabled = true;
+        sacarButton.disabled = true;
+    } else if (tipoContaSelecionado === "universitaria") {
+        depositarButton.disabled = true;
+        sacarButton.disabled = false;
+    }
+    
+}
+export function atualizarTipoConta() {
+    const tipoContaSelecionado = tipoContaSelect.value;
+    const tipoContaElement = document.getElementById("tipoConta"); 
+
+    if (tipoContaElement) {
+        tipoContaElement.textContent = ` ${tipoContaSelecionado}`;
+    }
+    atualizarBotoesConta();
+    atualizarTipoConta();
 }

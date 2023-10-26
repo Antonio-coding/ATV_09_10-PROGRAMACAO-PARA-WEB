@@ -1,4 +1,5 @@
 // validation.js
+
 // Função para validar os campos e redirecionar para a página de extrato
 function validarCampos() {
 
@@ -16,7 +17,6 @@ function validarCampos() {
     }
 
 }
-
 // Função para lidar com a ação "Entrar"
 export function handleEntrar() {
     if (validarCampos()) {
@@ -38,8 +38,16 @@ export function handleEntrar() {
         localStorage.setItem('agencia', agencia);
         localStorage.setItem('numero', numero);
         localStorage.setItem('tipo', tipo);
-        localStorage.setItem('saldo', saldo);
-        
+
+        // Importante: você deve usar uma chave específica para o saldo de cada tipo de conta
+        if (tipo === "corrente") {
+            localStorage.setItem('saldoCorrente', saldo);
+        } else if (tipo === "poupanca") {
+            localStorage.setItem('saldoPoupanca', saldo);
+        } else if (tipo === "universitaria") {
+            localStorage.setItem('saldoUniversitaria', saldo);
+        }
+
         // Redireciona para a página de extrato
         window.location.href = "../pages/extrato.html";
     }

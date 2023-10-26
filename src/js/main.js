@@ -8,8 +8,7 @@ import './components/extrato.js';
 import { criarEExibirContas, handleDeposito, handleSaque } from './components/transacoes.js';
 import { configurarEventosCartaoCredito } from './components/ativarCartaoCredito.js';
 import { toggleHistoricoTransacoes } from './components/toggleHistoricoTransacoes.js';
-import { ContaBancaria } from './components/ContaBancaria.js';
-
+import './graficos/grafico.js'
 
 // Função para lidar com o link de extrato
 function handleExtratoLink(event) {
@@ -23,7 +22,6 @@ function handleExtratoLink(event) {
     }
 }
 
-
 let extratoVisivel = false; // Variável para controlar o estado do extrato
 document.addEventListener("DOMContentLoaded", () => {
     includeFooter();
@@ -31,11 +29,11 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleHistoricoTransacoes();
     configurarEventosCartaoCredito();
 
-
     const entrarElement = document.getElementById('entrar')
     if (entrarElement) {
         entrarElement.addEventListener('click', handleEntrar)
     };
+
 
     const agencia = localStorage.getItem('agencia');
     const numero = localStorage.getItem('numero');
@@ -50,6 +48,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const numeroExtratoElement = document.getElementById("numeroExtrato");
     if (numeroExtratoElement) {
         numeroExtratoElement.textContent = numero;
+    }
+
+    const tipoContaElement = document.getElementById("tipoConta");
+    if (tipoContaElement) {
+        tipoContaElement.textContent = `Tipo de Conta: ${tipo}`;
     }
 
     const saldoAtualElement = document.getElementById("saldoAtual");
@@ -67,11 +70,12 @@ document.addEventListener("DOMContentLoaded", () => {
         extratoLink.addEventListener('click', handleExtratoLink);
     }
 
-    criarEExibirContas();
-    
     document.addEventListener("DOMContentLoaded", () => {
+        criarEExibirContas();
         handleDeposito();
         handleSaque();
+
        
+
     })
 });

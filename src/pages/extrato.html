@@ -53,9 +53,8 @@
       <button id="toggleButton">Expandir ▼</button>
 
       <form id="conta-form">
-
-        <label for="tipo">Tipo de Conta:</label>
-        <select id="tipo" name="tipo">
+        <label for="tipoContaSelect">Tipo de Conta:</label>
+        <select id="tipoContaSelect" name="tipo">
           <option value="corrente">Conta Corrente</option>
           <option value="poupanca">Conta Poupança</option>
           <option value="universitaria">Conta Universitária</option>
@@ -65,7 +64,6 @@
         <div id="cartaoCreditoButton" style="display: block;">
           <button id="ativarCartaoCredito">Ativar Cartão de Crédito</button>
         </div>
-
         <br>
         <br>
         <label for="valor">Valor:</label>
@@ -75,6 +73,10 @@
         <button type="button" id="depositar">Depositar</button>
         <button type="button" id="sacar">Sacar</button>
         <button type="button" id="exibirExtrato">Exibir Extrato</button>
+        <button type="button" id="grafico">
+          <a href="grafico.html" target="_blank">Gráfico</a>
+        </button>
+
       </form>
     </section>
 
@@ -82,7 +84,8 @@
       <h2>Detalhes da Conta</h2>
       <p>Agência: <span id="agenciaExtrato"></span></p>
       <p>Número da Conta: <span id="numeroExtrato"></span></p>
-<br>
+      <p>Tipo de Conta: <span id="tipoConta">Corrente</span></p> <!-- Elemento para exibir o tipo de conta -->
+      <br>
       <h1>Extrato</h1>
       <ul id="exibirExtratoEmTela">
         <h3>Saldo Atual</h3>
@@ -97,10 +100,7 @@
 
   </div>
   <div id="footer-container"></div>
-
-  <script type="module" src="../js/main.js">
-
-  </script>
+  <script type="module" src="../js/main.js"></script>
 
 
 </body>
